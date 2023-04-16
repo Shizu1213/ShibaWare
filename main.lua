@@ -14,19 +14,30 @@ flyButton.Position = UDim2.new(0.5, -50, 0.5, -25)
 flyButton.Text = "Fly"
 flyButton.Parent = gui
 
-local function toggleGUI(inputObject, gameProcessedEvent)
+local flyingEnabled = false
+
+local function toggleFly(inputObject, gameProcessedEvent)
     if not gameProcessedEvent and inputObject.KeyCode == Enum.KeyCode.RightShift then
         gui.Enabled = not gui.Enabled
     end
 end
 
-local function toggleFly()
+local function toggleGUI()
+    gui.Enabled = not gui.Enabled
     flyScript.flying = not flyScript.flying
     print("flying:", flyScript.flying)
 end
 
-flyButton.MouseButton1Click:Connect(toggleFly)
+flyButton.MouseButton1Click:Connect(function()
+    toggleGUI()
+end)
 
-game:GetService("UserInputService").InputBegan:Connect(toggleGUI)
+game:GetService("UserInputService").InputBegan:Connect(toggleFly)
 
-flyScript.flying = false -- Disable flying by default
+while wait() do
+    if flyingEnabled then
+        flyScript.flying = true
+    else
+        flyScript.flying = false
+    end
+end
