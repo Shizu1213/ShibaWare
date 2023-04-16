@@ -1,4 +1,4 @@
-local flyScriptURL = https://github.com/Shizu1213/ShibaWare/blob/main/FlyScript.lua
+local flyScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
 
 local function toggleFly()
     local flying = require(game:GetService("ReplicatedStorage").FlyScript).flying
