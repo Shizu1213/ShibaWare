@@ -5,8 +5,10 @@ local function toggleFly()
     require(game:GetService("ReplicatedStorage").FlyScript).flying = not flying
     
     local bodyVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("flyvel")
-    if bodyVelocity then
+    if not flying and bodyVelocity then
         bodyVelocity:Destroy()
+    elseif flying and not bodyVelocity then
+        fly()
     end
 end
 
