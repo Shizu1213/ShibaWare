@@ -1,5 +1,6 @@
 -- Load FlyScript module
-local flyScript = require(game:GetService("ReplicatedStorage").FlyScript)
+local flyScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
+local flyScript = loadstring(game:HttpGet(flyScriptURL))()
 
 -- Function to toggle fly
 local function toggleFly()
