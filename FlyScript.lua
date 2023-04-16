@@ -1,7 +1,6 @@
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 
-local flying = false
 local speed = 50
 
 local bodyVelocity = Instance.new("BodyVelocity", char.HumanoidRootPart)
@@ -23,4 +22,4 @@ end
 
 game:GetService("RunService").RenderStepped:Connect(updateVelocity)
 
-return {flying = flying}
+return {flying = false}
