@@ -1,7 +1,7 @@
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 
-local flyingScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyingScript.lua"
+local flyingScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
 local flyingScript = loadstring(game:HttpGet(flyingScriptURL))()
 
 local gui = Instance.new("ScreenGui")
