@@ -9,12 +9,8 @@ local function toggleFly()
     print("flying:", flyScript.flying)
     
     local bodyVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("flyvel")
-    if bodyVelocity then
-        bodyVelocity:Destroy()
-    end
-    
     if flying and not bodyVelocity then
-        fly()
+        flyScript.fly()
     end
 end
 
