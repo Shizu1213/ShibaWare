@@ -1,3 +1,19 @@
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Listen for PlayerGui being added
+playerGui.ChildAdded:Connect(function(child)
+    if child.Name == "MyScreenGui" then
+        child.Enabled = true
+    end
+end)
+
+-- Create and add the ScreenGui to PlayerGui
+local myGui = Instance.new("ScreenGui")
+myGui.Name = "MyScreenGui"
+myGui.Parent = playerGui
+myGui.Enabled = false
+
 local plr = game.Players.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:Wait()
 
