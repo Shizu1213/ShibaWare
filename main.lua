@@ -1,8 +1,12 @@
 local flyScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
 
+local flyScript = require(game:GetService("ReplicatedStorage").FlyScript)
+
 local function toggleFly()
-    local flying = require(game:GetService("ReplicatedStorage").FlyScript).flying
-    require(game:GetService("ReplicatedStorage").FlyScript).flying = not flying
+    local flying = flyScript.flying
+    flyScript.flying = not flying
+    
+    print("flying:", flyScript.flying)
     
     local bodyVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("flyvel")
     if bodyVelocity then
@@ -10,7 +14,7 @@ local function toggleFly()
     end
     
     if flying and not bodyVelocity then
-        require(game:GetService("ReplicatedStorage").FlyScript).fly()
+        fly()
     end
 end
 
