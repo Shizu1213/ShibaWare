@@ -34,3 +34,5 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, isTyping)
         flying = false
     end
 end)
+
+return { flying = flying }
