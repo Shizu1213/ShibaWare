@@ -1,5 +1,5 @@
 -- Load FlyScript module
-local flyScript = require(script.Parent.FlyScript)
+local flyScript = require(game:GetService("ReplicatedStorage").FlyScript)
 
 -- Function to toggle fly
 local function toggleFly()
@@ -18,7 +18,6 @@ end
 local gui = Instance.new("ScreenGui")
 gui.Enabled = false
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-print(gui.Parent)
 
 local flyButton = Instance.new("TextButton")
 flyButton.Size = UDim2.new(0, 100, 0, 50)
@@ -28,8 +27,6 @@ flyButton.Parent = gui
 
 -- Function to toggle GUI
 local function toggleGUI(input, gameProcessedEvent)
-    print("toggleGUI function called")
-    print(input.KeyCode)
     if input.KeyCode == Enum.KeyCode.RightShift then
         gui.Enabled = not gui.Enabled
     end
