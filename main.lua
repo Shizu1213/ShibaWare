@@ -10,7 +10,7 @@ local function toggleFly()
     end
     
     if flying and not bodyVelocity then
-        fly()
+        require(game:GetService("ReplicatedStorage").FlyScript).fly()
     end
 end
 
