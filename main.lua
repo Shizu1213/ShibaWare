@@ -1,7 +1,7 @@
-local flyScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
+-- Load FlyScript module
+local flyScript = require(script.Parent.FlyScript)
 
-local flyScript = require(game:GetService("ReplicatedStorage").FlyScript)
-
+-- Function to toggle fly
 local function toggleFly()
     local flying = flyScript.flying
     flyScript.flying = not flying
@@ -14,8 +14,9 @@ local function toggleFly()
     end
 end
 
+-- Create GUI
 local gui = Instance.new("ScreenGui")
-gui.Enabled = false -- Hide the GUI initially
+gui.Enabled = false
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local flyButton = Instance.new("TextButton")
@@ -24,13 +25,13 @@ flyButton.Position = UDim2.new(0.5, -50, 0.5, -25)
 flyButton.Text = "Fly"
 flyButton.Parent = gui
 
-if input.KeyCode == Enum.KeyCode.RightShift then
-    gui.Enabled = not gui.Enabled
-    print("GUI Enabled:", gui.Enabled)
+-- Function to toggle GUI
+local function toggleGUI(input, gameProcessedEvent)
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        gui.Enabled = not gui.Enabled
+    end
 end
 
-loadstring(game:HttpGet(flyScriptURL))()
-
+-- Connect event listeners
 flyButton.MouseButton1Click:Connect(toggleFly)
-
 game:GetService("UserInputService").InputBegan:Connect(toggleGUI)
