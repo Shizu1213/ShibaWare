@@ -24,10 +24,9 @@ flyButton.Position = UDim2.new(0.5, -50, 0.5, -25)
 flyButton.Text = "Fly"
 flyButton.Parent = gui
 
-local function toggleGUI(input, gameProcessedEvent)
-    if input.KeyCode == Enum.KeyCode.RightShift then
-        gui.Enabled = not gui.Enabled
-    end
+if input.KeyCode == Enum.KeyCode.RightShift then
+    gui.Enabled = not gui.Enabled
+    print("GUI Enabled:", gui.Enabled)
 end
 
 loadstring(game:HttpGet(flyScriptURL))()
