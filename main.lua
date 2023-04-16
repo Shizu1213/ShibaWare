@@ -1,8 +1,8 @@
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 
-local flyScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyScript.lua"
-local flyScript = loadstring(game:HttpGet(flyScriptURL))()
+local flyingScriptURL = "https://raw.githubusercontent.com/Shizu1213/ShibaWare/main/FlyingScript.lua"
+local flyingScript = loadstring(game:HttpGet(flyingScriptURL))()
 
 local gui = Instance.new("ScreenGui")
 gui.Enabled = false -- Hide the GUI initially
@@ -14,27 +14,30 @@ flyButton.Position = UDim2.new(0.5, -50, 0.5, -25)
 flyButton.Text = "Fly"
 flyButton.Parent = gui
 
+local flyingEnabled = false
+
 local function toggleFly(inputObject, gameProcessedEvent)
     if not gameProcessedEvent and inputObject.KeyCode == Enum.KeyCode.RightShift then
         gui.Enabled = not gui.Enabled
-    else
-        flyScript.flying = not flyScript.flying
-        print("flying:", flyScript.flying)
     end
 end
 
-local function toggleGUI(inputObject, gameProcessedEvent)
-    if not gameProcessedEvent and inputObject.KeyCode == Enum.KeyCode.RightShift then
-        gui.Enabled = not gui.Enabled
-    end
+local function toggleGUI()
+    gui.Enabled = not gui.Enabled
+    flyingEnabled = not flyingEnabled
+    flyingScript.flying = false
 end
 
 flyButton.MouseButton1Click:Connect(function()
-    flyScript.flying = not flyScript.flying
-    print("flying:", flyScript.flying)
+    toggleGUI()
 end)
 
 game:GetService("UserInputService").InputBegan:Connect(toggleFly)
-game:GetService("UserInputService").InputBegan:Connect(toggleGUI)
 
-gui.Enabled = true -- Show the GUI initially
+while wait() do
+    if flyingEnabled then
+        flyingScript.flying = true
+    else
+        flyingScript.flying = false
+    end
+end
