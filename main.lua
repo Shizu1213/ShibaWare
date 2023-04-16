@@ -36,3 +36,5 @@ end)
 
 game:GetService("UserInputService").InputBegan:Connect(toggleFly)
 game:GetService("UserInputService").InputBegan:Connect(toggleGUI)
+
+gui.Enabled = true -- Show the GUI initially
