@@ -3,6 +3,11 @@ local flyScriptURL = https://github.com/Shizu1213/ShibaWare/blob/main/FlyScript.
 local function toggleFly()
     local flying = require(game:GetService("ReplicatedStorage").FlyScript).flying
     require(game:GetService("ReplicatedStorage").FlyScript).flying = not flying
+    
+    local bodyVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("flyvel")
+    if bodyVelocity then
+        bodyVelocity:Destroy()
+    end
 end
 
 local gui = Instance.new("ScreenGui")
